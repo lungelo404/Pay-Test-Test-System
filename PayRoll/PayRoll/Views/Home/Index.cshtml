@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+@if (Request.IsAuthenticated)
+{
+
+    <div id="fh5co-section">
+        <div class="grid-project-section">
+            <a href="#">
+                <img src="Content/images/project-1.jpg" alt="Project" class="img-responsive">
+                <div class="desc text-center">
+                    @Html.ActionLink("Companies", "ListAllCompanies")
+                </div>
+            </a>
+        </div>
+        <div class="grid-project-section">
+            <a href="#">
+                <img src="Content/images/project-2.jpg" alt="Project" class="img-responsive">
+                <div class="desc text-center">
+
+                    @Html.ActionLink("All Employees", "ListAllEmployees")
+                </div>
+            </a>
+        </div>
+        <div class="grid-project-section">
+            <a href="#">
+                <img src="Content/images/project-3.jpg" alt="Project" class="img-responsive">
+                <div class="desc text-center">
+                    @Html.ActionLink("South African Employees", "ListSouthAfricanEmployees")
+                </div>
+            </a>
+        </div>
+    </div>
+  
+   
+}
+else
+{
+    <h1>Please Login to begin</h1>
+}

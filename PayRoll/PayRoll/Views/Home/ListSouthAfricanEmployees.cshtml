@@ -1,0 +1,57 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<PayRoll.Models.Employee>
+
+@{
+    ViewBag.Title = "ListSouthAfricanEmployees";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<div>
+<h2>South African Employees</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Name")
+        </th>
+        <th>
+            @Html.Label("Lastname")
+        </th>
+        <th>
+            @Html.Label("Position")
+        </th>
+        <th>
+            @Html.Label("Country")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeAddress.Country)
+            </td>
+        </tr>
+    }
+
+</table>
+</div>
+
+<div id="container" style="margin-left: 20px">
+    <p></p>
+    <p></p>
+    <div class="pagination" style="margin-left: 400px">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("ListAllCompanies", new { page }))
+    </div>
+</div>
+@Html.ActionLink("Back to List", "Index")
